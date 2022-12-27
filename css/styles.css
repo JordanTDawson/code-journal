@@ -1,0 +1,73 @@
+@media only screen and (min-width: 576px) {
+  .column-full {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .column-half {
+    width: 50%;
+  }
+}
+
+form {
+  width: 100%;
+  margin: auto;
+  line-height: 20px;
+}
+
+label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  border-radius: 6px;
+  margin: 8px 0;
+  padding: 10px;
+  border: 2px solid lightgray;
+}
+
+img {
+  width: 100%;
+}
+
+textarea {
+  border-radius: 6px;
+  width: 100%;
+  border: 2px solid lightgray;
+}
+
+.header-background {
+  background-color: purple;
+}
+
+.header-text-color {
+  color: white;
+}
+
+.entry-background {
+  background-color: whitesmoke;
+}
+
+.save-button {
+  background-color: rgb(93, 16, 160);
+  color: white;
+  padding: 8px 14px;
+  text-align: right;
+  border-radius: 8px;
+  border: 0;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.textarea-margin {
+  margin-top: 6px;
+}
+
+.save-margin {
+  margin: 10px 0;
+}
