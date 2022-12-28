@@ -20,7 +20,7 @@ function handleSubmit(event) {
     URL,
     notes
   };
-  data.entries.push(entryData);
+  data.entries.unshift(entryData);
   journalEntry.reset();
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
 }
