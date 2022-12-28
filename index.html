@@ -15,14 +15,73 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-  <header>
+<body class="entry-background">
+  <header class="header-background">
     <div class="container">
+      <div class="row">
+        <div class="column-full header-text-color">
+          <h3>Code Journal</h3>
+        </div>
+      </div>
     </div>
   </header>
   <main class="container">
-    <div data-view="entry-form"></div>
-    <div data-view="entries" class="hidden"></div>
+    <div data-view="entry-form">
+      <div class="row">
+        <div class="column-full">
+          <h1>New Entry</h1>
+        </div>
+      </div>
+      <form id="new-entry" class="row">
+        <div class="column-half">
+          <img src="images/placeholder-image-square.jpg">
+        </div>
+        <div class="column-half form-margin">
+          <label for="title-of-journal">Title</label>
+          <input name="title" type="text" id="title" required="required" placeholder="Enter title here...">
+          <label for="photo-url">Photo URL</label>
+          <input name="URL" type="url" id="photo-URL" required="required" placeholder="Paste photo URL here...">
+        </div>
+        <div class="column-full form-margin">
+          <label for="notes">Notes</label>
+          <div class="textarea-margin">
+            <textarea name="notes" id="notes" cols="55" rows="10" required="required" placeholder="Enter notes here..."></textarea>
+          </div>
+        </div>
+        <div class="column-full save-margin text-right">
+          <button class="save-button" type="submit" value="save">SAVE</button>
+        </div>
+      </form>
+    </div>
+    <div data-view="entries" class="">
+      <ul>
+        <li>
+          <div class="row entries-margin">
+            <div class="column-half">
+              <img src="images/placeholder-image-square.jpg">
+            </div>
+            <div class="column-half">
+              <h2 class="entries-no-margin">Lorem, ipsum dolor.</h2>
+              <p class="entries-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas est atque minus pariatur alias. Eius!</p>
+              <p class="entries-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, recusandae ea ut ex sit natus sint iure impedit ab optio quas, fugiat, omnis vero eligendi error?</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="row entries-margin">
+            <div class="column-half">
+              <img src="images/placeholder-image-square.jpg">
+            </div>
+            <div class="column-half">
+              <h2 class="entries-no-margin">Lorem, ipsum dolor.</h2>
+              <p class="entries-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas est atque minus pariatur alias. Eius!</p>
+              <p class="entries-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae et dolore repudiandae quis fugit repellat
+                corporis!</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
