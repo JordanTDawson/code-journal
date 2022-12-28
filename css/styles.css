@@ -31,6 +31,7 @@ input {
 
 img {
   width: 100%;
+  border-radius: 8px;
 }
 
 textarea {
@@ -64,10 +65,18 @@ textarea {
   text-align: right;
 }
 
+.form-margin {
+  margin-top: 12px;
+}
+
 .textarea-margin {
   margin-top: 6px;
 }
 
 .save-margin {
   margin: 10px 0;
+}
+
+.wrap {
+  flex-wrap: wrap;
 }
