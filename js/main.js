@@ -26,3 +26,37 @@ function handleSubmit(event) {
 }
 
 journalEntry.addEventListener('submit', handleSubmit);
+
+/* function renderEntry(entry) {
+  var li = document.createElement('li');
+
+  var row = document.createElement('div');
+  row.setAttribute('class', 'row entries-margin');
+  li.appendChild(row);
+
+  var $imgColumnHalf = document.createElement('div');
+  $imgColumnHalf.setAttribute('class', 'column-half');
+  row.appendChild($imgColumnHalf);
+
+  var img = document.createElement('img');
+  img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $imgColumnHalf.appendChild(img);
+
+  var $textColumnHalf = document.createElement('div');
+  $textColumnHalf.setAttribute('class', 'column-half');
+  row.appendChild($textColumnHalf);
+
+  var head = document.createElement('h2');
+  head.setAttribute('class', 'entries-no-margin');
+  $textColumnHalf.appendChild(head);
+
+  var $paragraph = document.createElement('p');
+  $paragraph.setAttribute('class', 'entries-text');
+  $textColumnHalf.appendChild($paragraph);
+
+  var $paragraphTwo = document.createElement('p');
+  $paragraphTwo.setAttribute('class', 'entries-text');
+  $textColumnHalf.appendChild($paragraphTwo);
+  return li;
+}
+*/
