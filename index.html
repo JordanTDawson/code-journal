@@ -32,20 +32,20 @@
           <h1>New Entry</h1>
         </div>
       </div>
-      <form class="row">
+      <form id="new-entry" class="row">
         <div class="column-half">
           <img src="images/placeholder-image-square.jpg">
         </div>
         <div class="column-half form-margin">
           <label for="title-of-journal">Title</label>
-          <input type="text" id="title" required="required" placeholder="Enter title here...">
+          <input name="title" type="text" id="title" required="required" placeholder="Enter title here...">
           <label for="photo-url">Photo URL</label>
-          <input type="url" id="photo-URL" required="required" placeholder="Paste photo URL here...">
+          <input name="URL" type="url" id="photo-URL" required="required" placeholder="Paste photo URL here...">
         </div>
         <div class="column-full form-margin">
           <label for="notes">Notes</label>
           <div class="textarea-margin">
-            <textarea name="Notes" id="notes" cols="55" rows="10" required="required" placeholder="Enter notes here..."></textarea>
+            <textarea name="notes" id="notes" cols="55" rows="10" required="required" placeholder="Enter notes here..."></textarea>
           </div>
         </div>
         <div class="column-full save-margin text-right">
