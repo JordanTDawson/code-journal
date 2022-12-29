@@ -75,7 +75,7 @@ textarea {
 }
 
 .entries-margin {
-  margin: 16px 0;
+  margin: 0 16px;
 }
 
 .entries-text {
@@ -93,4 +93,8 @@ textarea {
 
 .wrap {
   flex-wrap: wrap;
+}
+
+.anchor-entries {
+  text-decoration: 0;
 }

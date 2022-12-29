@@ -76,7 +76,7 @@ function toggleNoEntries(entry) {
     noEntries.className = 'hidden';
   }
 }
-/*
+
 function viewSwap(viewName) {
   var entries = document.querySelector('.entries');
   var entryForm = document.querySelector('.entry-form');
@@ -91,4 +91,16 @@ function viewSwap(viewName) {
     data.view = viewName;
   }
 }
-*/
+
+var entriesAnchor = document.querySelector('#entries-nav-bar');
+entriesAnchor.addEventListener('click', handleEntriesAnchorClick);
+function handleEntriesAnchorClick(event) {
+  viewSwap('entries');
+}
+
+/*
+   create a anchor element in html with an entries-nav-bar id
+   create a document.querySelector that chooses the anchor element
+   anchor.addEventListener with a click listener and calls the viewswap function
+   with argument entries as a string
+    */
