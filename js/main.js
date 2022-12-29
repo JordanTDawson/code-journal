@@ -98,6 +98,11 @@ function handleEntriesAnchorClick(event) {
   viewSwap('entries');
 }
 
+var newEntryClick = document.querySelector('#new-entry-click');
+newEntryClick.addEventListener('click', handleNewEntryClick);
+function handleNewEntryClick(event) {
+  viewSwap('entry-form');
+}
 /*
    create a anchor element in html with an entries-nav-bar id
    create a document.querySelector that chooses the anchor element
