@@ -27,7 +27,7 @@ function handleSubmit(event) {
 
 journalEntry.addEventListener('submit', handleSubmit);
 
-/* function renderEntry(entry) {
+function renderEntry(entry) {
   var li = document.createElement('li');
 
   var row = document.createElement('div');
@@ -39,7 +39,7 @@ journalEntry.addEventListener('submit', handleSubmit);
   row.appendChild($imgColumnHalf);
 
   var img = document.createElement('img');
-  img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  img.setAttribute('src', entry.URL);
   $imgColumnHalf.appendChild(img);
 
   var $textColumnHalf = document.createElement('div');
@@ -48,15 +48,21 @@ journalEntry.addEventListener('submit', handleSubmit);
 
   var head = document.createElement('h2');
   head.setAttribute('class', 'entries-no-margin');
+  head.textContent = entry.title;
   $textColumnHalf.appendChild(head);
 
   var $paragraph = document.createElement('p');
   $paragraph.setAttribute('class', 'entries-text');
+  $paragraph.textContent = entry.notes;
   $textColumnHalf.appendChild($paragraph);
 
-  var $paragraphTwo = document.createElement('p');
-  $paragraphTwo.setAttribute('class', 'entries-text');
-  $textColumnHalf.appendChild($paragraphTwo);
   return li;
 }
-*/
+
+var ul = document.querySelector('ul');
+document.addEventListener('DOMContentLoaded', function (event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var dataEntered = renderEntry(data.entries[i]);
+    ul.appendChild(dataEntered);
+  }
+});
