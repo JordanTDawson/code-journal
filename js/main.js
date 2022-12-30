@@ -23,6 +23,10 @@ function handleSubmit(event) {
   data.entries.unshift(entryData);
   journalEntry.reset();
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  var renderedEntry = renderEntry(entryData);
+  ul.prepend(renderedEntry);
+  viewSwap('entries');
+  toggleNoEntries(entryData);
 }
 
 journalEntry.addEventListener('submit', handleSubmit);
