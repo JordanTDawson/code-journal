@@ -91,10 +91,6 @@ textarea {
   text-align: center;
 }
 
-.wrap {
-  flex-wrap: wrap;
-}
-
 .anchor-entries {
   text-decoration: 0;
 }
