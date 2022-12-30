@@ -22,6 +22,15 @@ img {
   border-radius: 8px;
 }
 
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  width: 100%;
+}
+
 textarea {
   border-radius: 6px;
   width: 100%;
@@ -63,4 +72,41 @@ textarea {
 
 .save-margin {
   margin: 10px 0;
+}
+
+.entries-margin {
+  margin: 0 16px;
+}
+
+.entries-text {
+  line-height: 30px;
+  font-size: 18px;
+}
+
+.entries-no-margin {
+  margin: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.anchor-entries {
+  text-decoration: 0;
+}
+
+.anchor-button {
+  text-decoration: 0;
+  width: 115px;
+  height: 25px;
+  background: rgb(93, 16, 160);
+  padding: 5px;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+}
+
+.entries-align {
+  justify-content: space-between;
+  align-items: center;
 }
