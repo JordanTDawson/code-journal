@@ -108,9 +108,3 @@ newEntryClick.addEventListener('click', handleNewEntryClick);
 function handleNewEntryClick(event) {
   viewSwap('entry-form');
 }
-/*
-   create a anchor element in html with an entries-nav-bar id
-   create a document.querySelector that chooses the anchor element
-   anchor.addEventListener with a click listener and calls the viewswap function
-   with argument entries as a string
-    */
