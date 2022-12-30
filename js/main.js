@@ -66,6 +66,7 @@ function renderEntry(entry) {
 var ul = document.querySelector('ul');
 document.addEventListener('DOMContentLoaded', function (event) {
   toggleNoEntries();
+  viewSwap(data.view);
   for (var i = 0; i < data.entries.length; i++) {
     var dataEntered = renderEntry(data.entries[i]);
     ul.appendChild(dataEntered);
