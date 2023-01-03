@@ -33,6 +33,7 @@ journalEntry.addEventListener('submit', handleSubmit);
 
 function renderEntry(entry) {
   var li = document.createElement('li');
+  li.setAttribute('data-entry-id', data.nextEntryId);
 
   var row = document.createElement('div');
   row.setAttribute('class', 'row entries-margin');
@@ -51,9 +52,19 @@ function renderEntry(entry) {
   row.appendChild($textColumnHalf);
 
   var head = document.createElement('h2');
-  head.setAttribute('class', 'entries-no-margin');
+  head.setAttribute('class', 'entries-no-margin entries-header-space');
   head.textContent = entry.title;
   $textColumnHalf.appendChild(head);
+
+  var editImageButton = document.createElement('button');
+  editImageButton.setAttribute('class', 'edit-button');
+  editImageButton.setAttribute('id', 'edit-image-button');
+  head.appendChild(editImageButton);
+
+  var editImage = document.createElement('i');
+  editImage.setAttribute('class', 'fa fa-pencil');
+  editImage.setAttribute('aria-hidden', 'true');
+  editImageButton.appendChild(editImage);
 
   var $paragraph = document.createElement('p');
   $paragraph.setAttribute('class', 'entries-text');
@@ -85,13 +96,22 @@ function toggleNoEntries(entry) {
 function viewSwap(viewName) {
   var entries = document.querySelector('.entries');
   var entryForm = document.querySelector('.entry-form');
+  var edittingForm = document.querySelector('.edit-entry');
   if (viewName === 'entries') {
     entries.classList.remove('hidden');
     entryForm.classList.add('hidden');
+    edittingForm.classList.add('hidden');
     data.view = viewName;
   }
   if (viewName === 'entry-form') {
     entryForm.classList.remove('hidden');
+    entries.classList.add('hidden');
+    edittingForm.classList.add('hidden');
+    data.view = viewName;
+  }
+  if (viewName === 'edit-entry') {
+    edittingForm.classList.remove('hidden');
+    entryForm.classList.add('hidden');
     entries.classList.add('hidden');
     data.view = viewName;
   }
@@ -107,4 +127,10 @@ var newEntryClick = document.querySelector('#new-entry-click');
 newEntryClick.addEventListener('click', handleNewEntryClick);
 function handleNewEntryClick(event) {
   viewSwap('entry-form');
+}
+
+var editEntryClick = document.querySelector('#edit-image-button');
+editEntryClick.addEventListener('click', handleEditButtonClick);
+function handleEditButtonClick(event) {
+  viewSwap('edit-entry');
 }
