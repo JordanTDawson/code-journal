@@ -59,6 +59,7 @@ function renderEntry(entry) {
   var $icon = document.createElement('i');
   $icon.setAttribute('class', 'fa-sharp fa-solid fa-pencil');
   head.appendChild($icon);
+  $icon.addEventListener('click', handleEditEntryClick);
 
   var $paragraph = document.createElement('p');
   $paragraph.setAttribute('class', 'entries-text');
@@ -90,17 +91,14 @@ function toggleNoEntries(entry) {
 function viewSwap(viewName) {
   var entries = document.querySelector('.entries');
   var entryForm = document.querySelector('.entry-form');
-  var edittingForm = document.querySelector('.edit-entry');
   if (viewName === 'entries') {
     entries.classList.remove('hidden');
     entryForm.classList.add('hidden');
-    edittingForm.classList.add('hidden');
     data.view = viewName;
   }
   if (viewName === 'entry-form') {
     entryForm.classList.remove('hidden');
     entries.classList.add('hidden');
-    edittingForm.classList.add('hidden');
     data.view = viewName;
   }
 }
@@ -117,8 +115,6 @@ function handleNewEntryClick(event) {
   viewSwap('entry-form');
 }
 
-var editEntryClick = document.querySelector('i');
-editEntryClick.addEventListener('click', handleEditEntryClick);
 function handleEditEntryClick(event) {
   viewSwap('entry-form');
 }
