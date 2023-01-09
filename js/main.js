@@ -33,6 +33,7 @@ journalEntry.addEventListener('submit', handleSubmit);
 
 function renderEntry(entry) {
   var li = document.createElement('li');
+  li.setAttribute('data-entry-id', data.nextEntryId);
 
   var row = document.createElement('div');
   row.setAttribute('class', 'row entries-margin');
@@ -51,9 +52,13 @@ function renderEntry(entry) {
   row.appendChild($textColumnHalf);
 
   var head = document.createElement('h2');
-  head.setAttribute('class', 'entries-no-margin');
+  head.setAttribute('class', 'row entries-align entries-no-margin');
   head.textContent = entry.title;
   $textColumnHalf.appendChild(head);
+
+  var $icon = document.createElement('i');
+  $icon.setAttribute('class', 'fa-sharp fa-solid fa-pencil');
+  head.appendChild($icon);
 
   var $paragraph = document.createElement('p');
   $paragraph.setAttribute('class', 'entries-text');
@@ -106,5 +111,11 @@ function handleEntriesAnchorClick(event) {
 var newEntryClick = document.querySelector('#new-entry-click');
 newEntryClick.addEventListener('click', handleNewEntryClick);
 function handleNewEntryClick(event) {
+  viewSwap('entry-form');
+}
+
+var editEntryClick = document.querySelector('i');
+editEntryClick.addEventListener('click', handleEditEntryClick);
+function handleEditEntryClick(event) {
   viewSwap('entry-form');
 }
