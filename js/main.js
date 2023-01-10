@@ -28,6 +28,18 @@ function handleSubmit(event) {
     ul.prepend(renderedEntry);
     viewSwap('entries');
     toggleNoEntries(entryData);
+  } else {
+    var editEntryId = data.editing.entryId;
+    var editEntryTitle = data.editing.title.value;
+    var editEntryURL = data.editing.URL.value;
+    var editEntryNotes = data.editing.notes.value;
+    // eslint-disable-next-line no-unused-vars
+    var editEntry = {
+      editEntryId,
+      editEntryTitle,
+      editEntryURL,
+      editEntryNotes
+    };
   }
 }
 
