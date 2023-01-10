@@ -15,7 +15,7 @@ function handleSubmit(event) {
   var URL = journalEntry.elements.URL.value;
   var notes = journalEntry.elements.notes.value;
   var entryData = {
-    entryID: data.nextEntryId++,
+    entryId: data.nextEntryId++,
     title,
     URL,
     notes
@@ -33,7 +33,7 @@ journalEntry.addEventListener('submit', handleSubmit);
 
 function renderEntry(entry) {
   var li = document.createElement('li');
-  li.setAttribute('data-entry-id', data.nextEntryId);
+  li.setAttribute('data-entry-id', entry.entryId);
 
   var row = document.createElement('div');
   row.setAttribute('class', 'row entries-margin');
@@ -59,7 +59,7 @@ function renderEntry(entry) {
   var $icon = document.createElement('i');
   $icon.setAttribute('class', 'fa-sharp fa-solid fa-pencil');
   head.appendChild($icon);
-  // $icon.addEventListener('click', handleEditEntryClick);
+  $icon.addEventListener('click', handleEditEntryClick);
 
   var $paragraph = document.createElement('p');
   $paragraph.setAttribute('class', 'entries-text');
@@ -115,10 +115,14 @@ function handleNewEntryClick(event) {
   viewSwap('entry-form');
 }
 
-// function handleEditEntryClick(event) {
-//   viewSwap('entry-form');
-//   var li = document.querySelector('li');
-//   var clickedLi = event.target.closest('li');
-//   var dataEntryId = clickedLi.getAttribute('data-entry-id');
-//   console.log(dataEntryId);
-// }
+function handleEditEntryClick(event) {
+  viewSwap('entry-form');
+  var clickedLi = event.target.closest('li');
+  var dataEntryId = clickedLi.getAttribute('data-entry-id');
+  var dataNumber = +dataEntryId;
+  for (var i = 0; i < data.entries.length; i++) {
+    if (dataNumber === data.entries[i].entryId) {
+      data.editing = data.entries[i];
+    }
+  }
+}
