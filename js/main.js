@@ -15,8 +15,9 @@ function handleSubmit(event) {
     var title = journalEntry.elements.title.value;
     var URL = journalEntry.elements.URL.value;
     var notes = journalEntry.elements.notes.value;
+    var entryId = data.nextEntryId++;
     var entryData = {
-      entryId: data.nextEntryId++,
+      entryId,
       title,
       URL,
       notes
@@ -29,17 +30,17 @@ function handleSubmit(event) {
     viewSwap('entries');
     toggleNoEntries(entryData);
   } else {
-    var editEntryId = data.editing.entryId;
-    var editEntryTitle = data.editing.title.value;
-    var editEntryURL = data.editing.URL.value;
-    var editEntryNotes = data.editing.notes.value;
-    // eslint-disable-next-line no-unused-vars
     var editEntry = {
-      editEntryId,
-      editEntryTitle,
-      editEntryURL,
-      editEntryNotes
+      entryId: data.editing.entryId,
+      title: journalEntry.elements.title.value,
+      URL: journalEntry.elements.URL.value,
+      notes: journalEntry.elements.notes.value
     };
+    for (var i = 0; i < data.entries.length; i++) {
+      if (entryId === data.entries[i].entryId) {
+        data.entries[i] = editEntry;
+      }
+    }
   }
 }
 
