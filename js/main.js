@@ -10,23 +10,25 @@ photoURL.addEventListener('input', changeURL);
 var journalEntry = document.querySelector('#new-entry');
 
 function handleSubmit(event) {
-  event.preventDefault();
-  var title = journalEntry.elements.title.value;
-  var URL = journalEntry.elements.URL.value;
-  var notes = journalEntry.elements.notes.value;
-  var entryData = {
-    entryId: data.nextEntryId++,
-    title,
-    URL,
-    notes
-  };
-  data.entries.unshift(entryData);
-  journalEntry.reset();
-  img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  var renderedEntry = renderEntry(entryData);
-  ul.prepend(renderedEntry);
-  viewSwap('entries');
-  toggleNoEntries(entryData);
+  if (data.editing === null) {
+    event.preventDefault();
+    var title = journalEntry.elements.title.value;
+    var URL = journalEntry.elements.URL.value;
+    var notes = journalEntry.elements.notes.value;
+    var entryData = {
+      entryId: data.nextEntryId++,
+      title,
+      URL,
+      notes
+    };
+    data.entries.unshift(entryData);
+    journalEntry.reset();
+    img.setAttribute('src', 'images/placeholder-image-square.jpg');
+    var renderedEntry = renderEntry(entryData);
+    ul.prepend(renderedEntry);
+    viewSwap('entries');
+    toggleNoEntries(entryData);
+  }
 }
 
 journalEntry.addEventListener('submit', handleSubmit);
