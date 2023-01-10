@@ -59,7 +59,7 @@ function renderEntry(entry) {
   var $icon = document.createElement('i');
   $icon.setAttribute('class', 'fa-sharp fa-solid fa-pencil');
   head.appendChild($icon);
-  $icon.addEventListener('click', handleEditEntryClick);
+  // $icon.addEventListener('click', handleEditEntryClick);
 
   var $paragraph = document.createElement('p');
   $paragraph.setAttribute('class', 'entries-text');
@@ -115,6 +115,10 @@ function handleNewEntryClick(event) {
   viewSwap('entry-form');
 }
 
-function handleEditEntryClick(event) {
-  viewSwap('entry-form');
-}
+// function handleEditEntryClick(event) {
+//   viewSwap('entry-form');
+//   var li = document.querySelector('li');
+//   var clickedLi = event.target.closest('li');
+//   var dataEntryId = clickedLi.getAttribute('data-entry-id');
+//   console.log(dataEntryId);
+// }
