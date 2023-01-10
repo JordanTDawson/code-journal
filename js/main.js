@@ -123,6 +123,16 @@ function handleEditEntryClick(event) {
   for (var i = 0; i < data.entries.length; i++) {
     if (dataNumber === data.entries[i].entryId) {
       data.editing = data.entries[i];
+      var headNewEntry = document.querySelector('h1');
+      headNewEntry.textContent = 'Edit Entry';
+      var titleNewEntry = document.querySelector('#title');
+      titleNewEntry.setAttribute('value', data.editing.title);
+      var URLNewEntry = document.querySelector('#photo-URL');
+      URLNewEntry.setAttribute('value', data.editing.URL);
+      var imgPlaceholder = document.querySelector('img');
+      imgPlaceholder.setAttribute('src', data.editing.URL);
+      var notesNewEntry = document.querySelector('#notes');
+      notesNewEntry.textContent = data.editing.notes;
     }
   }
 }
