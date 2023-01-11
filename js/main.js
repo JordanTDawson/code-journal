@@ -10,8 +10,8 @@ photoURL.addEventListener('input', changeURL);
 var journalEntry = document.querySelector('#new-entry');
 
 function handleSubmit(event) {
+  event.preventDefault();
   if (data.editing === null) {
-    event.preventDefault();
     var title = journalEntry.elements.title.value;
     var URL = journalEntry.elements.URL.value;
     var notes = journalEntry.elements.notes.value;
@@ -30,6 +30,7 @@ function handleSubmit(event) {
     viewSwap('entries');
     toggleNoEntries(entryData);
   } else {
+    viewSwap('entries');
     var editEntry = {
       entryId: data.editing.entryId,
       title: journalEntry.elements.title.value,
@@ -37,11 +38,24 @@ function handleSubmit(event) {
       notes: journalEntry.elements.notes.value
     };
     for (var i = 0; i < data.entries.length; i++) {
-      if (entryId === data.entries[i].entryId) {
+      if (data.entries[i].entryId === editEntry.entryId) {
         data.entries[i] = editEntry;
+        var edittedEntry = renderEntry(data.entries[i]);
+        var allLi = document.querySelectorAll('li');
+        for (var index = 0; index < allLi.length; index++) {
+          var liValues = allLi[index].getAttribute('data-entry-id');
+          if (+liValues === editEntry.entryId) {
+            allLi[index].replaceWith(edittedEntry);
+            data.editing = null;
+          }
+        }
       }
     }
   }
+  img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  journalEntry.reset();
+  var replaceNewEntry = document.querySelector('h1');
+  replaceNewEntry.textContent = 'New Entry';
 }
 
 journalEntry.addEventListener('submit', handleSubmit);
@@ -140,14 +154,11 @@ function handleEditEntryClick(event) {
       data.editing = data.entries[i];
       var headNewEntry = document.querySelector('h1');
       headNewEntry.textContent = 'Edit Entry';
-      var titleNewEntry = document.querySelector('#title');
-      titleNewEntry.setAttribute('value', data.editing.title);
-      var URLNewEntry = document.querySelector('#photo-URL');
-      URLNewEntry.setAttribute('value', data.editing.URL);
+      document.querySelector('#title').value = data.editing.title;
+      document.querySelector('#photo-URL').value = data.editing.URL;
       var imgPlaceholder = document.querySelector('img');
       imgPlaceholder.setAttribute('src', data.editing.URL);
-      var notesNewEntry = document.querySelector('#notes');
-      notesNewEntry.textContent = data.editing.notes;
+      document.querySelector('#notes').value = data.editing.notes;
     }
   }
 }
