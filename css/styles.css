@@ -110,3 +110,13 @@ textarea {
   justify-content: space-between;
   align-items: center;
 }
+
+.entries-header-space {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-button {
+  border: 0;
+  background-color: whitesmoke;
+}

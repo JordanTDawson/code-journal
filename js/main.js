@@ -11,28 +11,58 @@ var journalEntry = document.querySelector('#new-entry');
 
 function handleSubmit(event) {
   event.preventDefault();
-  var title = journalEntry.elements.title.value;
-  var URL = journalEntry.elements.URL.value;
-  var notes = journalEntry.elements.notes.value;
-  var entryData = {
-    entryID: data.nextEntryId++,
-    title,
-    URL,
-    notes
-  };
-  data.entries.unshift(entryData);
-  journalEntry.reset();
+  if (data.editing === null) {
+    var title = journalEntry.elements.title.value;
+    var URL = journalEntry.elements.URL.value;
+    var notes = journalEntry.elements.notes.value;
+    var entryId = data.nextEntryId++;
+    var entryData = {
+      entryId,
+      title,
+      URL,
+      notes
+    };
+    data.entries.unshift(entryData);
+    journalEntry.reset();
+    img.setAttribute('src', 'images/placeholder-image-square.jpg');
+    var renderedEntry = renderEntry(entryData);
+    ul.prepend(renderedEntry);
+    viewSwap('entries');
+    toggleNoEntries(entryData);
+  } else {
+    viewSwap('entries');
+    var editEntry = {
+      entryId: data.editing.entryId,
+      title: journalEntry.elements.title.value,
+      URL: journalEntry.elements.URL.value,
+      notes: journalEntry.elements.notes.value
+    };
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === editEntry.entryId) {
+        data.entries[i] = editEntry;
+        var edittedEntry = renderEntry(data.entries[i]);
+        var allLi = document.querySelectorAll('li');
+        for (var index = 0; index < allLi.length; index++) {
+          var liValues = allLi[index].getAttribute('data-entry-id');
+          if (+liValues === editEntry.entryId) {
+            allLi[index].replaceWith(edittedEntry);
+            data.editing = null;
+          }
+        }
+      }
+    }
+  }
   img.setAttribute('src', 'images/placeholder-image-square.jpg');
-  var renderedEntry = renderEntry(entryData);
-  ul.prepend(renderedEntry);
-  viewSwap('entries');
-  toggleNoEntries(entryData);
+  journalEntry.reset();
+  var replaceNewEntry = document.querySelector('h1');
+  replaceNewEntry.textContent = 'New Entry';
 }
 
 journalEntry.addEventListener('submit', handleSubmit);
 
 function renderEntry(entry) {
   var li = document.createElement('li');
+  li.setAttribute('data-entry-id', entry.entryId);
 
   var row = document.createElement('div');
   row.setAttribute('class', 'row entries-margin');
@@ -51,9 +81,14 @@ function renderEntry(entry) {
   row.appendChild($textColumnHalf);
 
   var head = document.createElement('h2');
-  head.setAttribute('class', 'entries-no-margin');
+  head.setAttribute('class', 'row entries-align entries-no-margin');
   head.textContent = entry.title;
   $textColumnHalf.appendChild(head);
+
+  var $icon = document.createElement('i');
+  $icon.setAttribute('class', 'fa-sharp fa-solid fa-pencil');
+  head.appendChild($icon);
+  $icon.addEventListener('click', handleEditEntryClick);
 
   var $paragraph = document.createElement('p');
   $paragraph.setAttribute('class', 'entries-text');
@@ -107,4 +142,23 @@ var newEntryClick = document.querySelector('#new-entry-click');
 newEntryClick.addEventListener('click', handleNewEntryClick);
 function handleNewEntryClick(event) {
   viewSwap('entry-form');
+}
+
+function handleEditEntryClick(event) {
+  viewSwap('entry-form');
+  var clickedLi = event.target.closest('li');
+  var dataEntryId = clickedLi.getAttribute('data-entry-id');
+  var dataNumber = +dataEntryId;
+  for (var i = 0; i < data.entries.length; i++) {
+    if (dataNumber === data.entries[i].entryId) {
+      data.editing = data.entries[i];
+      var headNewEntry = document.querySelector('h1');
+      headNewEntry.textContent = 'Edit Entry';
+      document.querySelector('#title').value = data.editing.title;
+      document.querySelector('#photo-URL').value = data.editing.URL;
+      var imgPlaceholder = document.querySelector('img');
+      imgPlaceholder.setAttribute('src', data.editing.URL);
+      document.querySelector('#notes').value = data.editing.notes;
+    }
+  }
 }
