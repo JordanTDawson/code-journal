@@ -1,5 +1,7 @@
 var photoURL = document.querySelector('#photo-URL');
 var img = document.querySelector('img');
+var deleteButton = document.querySelector('#delete-button');
+var buttonColumn = document.querySelector('#button-column');
 
 function changeURL(event) {
   var value = event.target.value;
@@ -56,6 +58,8 @@ function handleSubmit(event) {
   journalEntry.reset();
   var replaceNewEntry = document.querySelector('h1');
   replaceNewEntry.textContent = 'New Entry';
+  deleteButton.setAttribute('class', 'delete-button hidden');
+  buttonColumn.setAttribute('class', 'column-full save-margin space-between text-right');
 }
 
 journalEntry.addEventListener('submit', handleSubmit);
@@ -159,6 +163,8 @@ function handleEditEntryClick(event) {
       var imgPlaceholder = document.querySelector('img');
       imgPlaceholder.setAttribute('src', data.editing.URL);
       document.querySelector('#notes').value = data.editing.notes;
+      deleteButton.classList.remove('hidden');
+      buttonColumn.classList.remove('text-right');
     }
   }
 }
