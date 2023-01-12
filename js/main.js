@@ -171,11 +171,19 @@ function handleEditEntryClick(event) {
 
 var cancelButton = document.querySelector('#cancel');
 var modalContainer = document.querySelector('#closed-container');
-// var confirmButton = document.querySelector('#confirm');
+var confirmButton = document.querySelector('#confirm');
 
 deleteButton.addEventListener('click', () => {
   modalContainer.classList.add('show');
 });
+
 cancelButton.addEventListener('click', () => {
   modalContainer.classList.remove('show');
 });
+
+function handleModalConfirmClick(event) {
+  modalContainer.classList.remove('show');
+  viewSwap('entries');
+}
+
+confirmButton.addEventListener('click', handleModalConfirmClick);
