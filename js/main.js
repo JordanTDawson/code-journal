@@ -140,11 +140,25 @@ var entriesAnchor = document.querySelector('#entries-nav-bar');
 entriesAnchor.addEventListener('click', handleEntriesAnchorClick);
 function handleEntriesAnchorClick(event) {
   viewSwap('entries');
+  data.editing = null;
+  var replaceNewEntry = document.querySelector('h1');
+  replaceNewEntry.textContent = 'New Entry';
+  img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  deleteButton.setAttribute('class', 'delete-button   hidden');
+  buttonColumn.setAttribute('class', 'column-full save-margin space-between text-right');
+  journalEntry.reset();
 }
 
 var newEntryClick = document.querySelector('#new-entry-click');
 newEntryClick.addEventListener('click', handleNewEntryClick);
 function handleNewEntryClick(event) {
+  data.editing = null;
+  var replaceNewEntry = document.querySelector('h1');
+  replaceNewEntry.textContent = 'New Entry';
+  img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  deleteButton.setAttribute('class', 'delete-button   hidden');
+  buttonColumn.setAttribute('class', 'column-full save-margin space-between text-right');
+  journalEntry.reset();
   viewSwap('entry-form');
 }
 
