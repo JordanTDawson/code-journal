@@ -58,7 +58,7 @@ function handleSubmit(event) {
   journalEntry.reset();
   var replaceNewEntry = document.querySelector('h1');
   replaceNewEntry.textContent = 'New Entry';
-  deleteButton.setAttribute('class', 'delete-button hidden');
+  deleteButton.setAttribute('class', 'delete-button   hidden');
   buttonColumn.setAttribute('class', 'column-full save-margin space-between text-right');
 }
 
@@ -150,6 +150,8 @@ function handleNewEntryClick(event) {
 
 function handleEditEntryClick(event) {
   viewSwap('entry-form');
+  deleteButton.classList.remove('hidden');
+  buttonColumn.classList.remove('text-right');
   var clickedLi = event.target.closest('li');
   var dataEntryId = clickedLi.getAttribute('data-entry-id');
   var dataNumber = +dataEntryId;
@@ -163,8 +165,17 @@ function handleEditEntryClick(event) {
       var imgPlaceholder = document.querySelector('img');
       imgPlaceholder.setAttribute('src', data.editing.URL);
       document.querySelector('#notes').value = data.editing.notes;
-      deleteButton.classList.remove('hidden');
-      buttonColumn.classList.remove('text-right');
     }
   }
 }
+
+var cancelButton = document.querySelector('#cancel');
+var modalContainer = document.querySelector('#closed-container');
+// var confirmButton = document.querySelector('#confirm');
+
+deleteButton.addEventListener('click', () => {
+  modalContainer.classList.add('show');
+});
+cancelButton.addEventListener('click', () => {
+  modalContainer.classList.remove('show');
+});

@@ -54,7 +54,7 @@
           </div>
         </div>
         <div id="button-column" class="column-full save-margin space-between text-right">
-          <button id="delete-button" class="delete-button hidden" type="submit" value="Delete Entry">Delete Entry</button>
+          <button id="delete-button" class="delete-button hidden" type="button" value="Delete Entry">Delete Entry</button>
           <button class="save-button" type="submit" value="save">SAVE</button>
         </div>
       </form>
@@ -75,6 +75,15 @@
       </ul>
     </div>
   </main>
+  <div class="modal-container" id="closed-container">
+    <div class="modal">
+      <p class="modal-text-padding">Are you sure you want to delete this entry?</p>
+      <div class="column-full save-margin space-between">
+        <button id="cancel" class="cancel-button">CANCEL</button>
+        <button id="confirm" class="confirm-button">CONFIRM</button>
+      </div>
+    </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
